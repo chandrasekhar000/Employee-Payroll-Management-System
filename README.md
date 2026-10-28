@@ -1,83 +1,48 @@
-# PayFlow HR — Employee Payroll Management System
+# Employee Payroll Management System
 
-A Java-based desktop application for managing employee records, salary structures, attendance, leave requests, payroll processing, and payslips through a user-friendly graphical interface.
+Java Swing desktop application using MySQL + JDBC.
 
-## 📌 Project Overview
+## Features
+- Employee CRUD (add, update, delete, list and search)
+- Monthly payroll and payslip generation
+- Net salary = basic salary + allowance - deduction
+- Duplicate employee/month payroll updates the existing row
+- Payroll history table and CSV export
 
-**PayFlow HR** is an Employee Payroll Management System developed using Java Swing. It aims to simplify common HR and payroll operations by bringing employee information, salary processing, and reporting into one desktop application.
+## Requirements
+- JDK 17+
+- MySQL Server
+- Maven 3.8+
 
-The application features a dark-themed dashboard and organized modules for employee management, department management, payroll, payslips, and reports.
+## Setup
+1. Start MySQL.
+2. Run `schema.sql` in MySQL Workbench or MySQL CLI. This creates the `employee_payroll` database and tables.
+3. Set your database password using environment variables if needed:
+   - Windows PowerShell: `$env:PAYROLL_DB_USER="root"` and `$env:PAYROLL_DB_PASSWORD="111"`
+   - Optional URL override: `PAYROLL_DB_URL`
+4. Open this folder as a Maven project in IntelliJ IDEA and wait for dependencies to download.
+5. Run `com.sonu.payroll.Main`.
 
-The project uses **Java file handling and serialization** for local data persistence, so it can run without requiring a separate database server.
-
-## ✨ Key Features
-
-- **Dashboard:** View key employee and payroll information in one place.
-- **Employee Management:** Add, view, update, and manage employee records.
-- **Department Management:** Organize employees by department.
-- **Salary Structures:** Manage salary-related information.
-- **Attendance Management:** Maintain employee attendance records.
-- **Leave Requests:** Track and manage employee leave requests.
-- **Payroll Processing:** Process monthly payroll using the application's salary information.
-- **Payslips:** Generate and view employee payslip information.
-- **Reports:** Export supported reports to CSV format for further analysis.
-- **Data Backup:** Support local data backup and recovery workflows.
-- **Audit Log:** Track application activities where supported.
-- **User Interface:** Navigate the application through a dark-themed Java Swing interface.
-
-## 🛠️ Technology Stack
-
-| Technology | Purpose |
-|---|---|
-| Java | Core application logic and object-oriented programming |
-| Java Swing | Desktop graphical user interface |
-| Java File Handling | Local data storage |
-| Java Serialization | Persist application data |
-| CSV | Exporting reports |
-| Visual Studio Code | Development environment |
-
-## 🏗️ Project Structure
-
-```text
-Employee-Payroll-Management-System/
-├── src/
-│   └── com/
-│       └── payroll/
-│           └── Main.java
-├── .gitignore
-└── README.md
+From terminal:
+```bash
+mvn clean package
+mvn dependency:copy-dependencies
+```
+Windows:
+```powershell
+java -cp "target/classes;target/dependency/*" com.sonu.payroll.Main
+```
+macOS/Linux:
+```bash
+java -cp "target/classes:target/dependency/*" com.sonu.payroll.Main
 ```
 
+## Use
+1. In Employees, add an employee.
+2. Select that employee from the table.
+3. Open Payroll & Payslips.
+4. Enter month as `YYYY-MM`, allowance and deduction.
+5. Generate the payslip. Net salary is calculated automatically.
+6. Export payroll records to CSV if required.
 
-
-## 🎯 Learning Outcomes
-
-This project provides practical experience with:
-
-- Object-oriented programming concepts in Java
-- Building desktop applications with Java Swing
-- Event handling and user interaction
-- File handling and object serialization
-- Organizing application features into modules
-- Generating CSV reports
-- Managing source code with Git and GitHub
-- Designing a user-friendly application interface
-
-## 🔮 Future Improvements
-
-Potential enhancements include:
-
-- Role-based access control for administrators and HR staff
-- Stronger authentication and password protection
-- Automated payroll calculations and validation
-- PDF payslip generation
-- Improved analytics and graphical reports
-- Automated testing and input validation
-- Migration to a database-backed architecture for multi-user use
-
-
-
-
----
-
-⭐ If you find this project useful, consider giving the repository a star!
+Student-project note: This is a demo system; it does not implement statutory tax, PF/ESI, attendance, authentication or production payroll compliance. Avoid real sensitive employee data.
