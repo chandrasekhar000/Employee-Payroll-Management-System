@@ -48,19 +48,7 @@ Employee-Payroll-Management-System/
 └── README.md
 ```
 
-These are demonstration credentials only. Do not use them for a production system. For a public repository, avoid hardcoding real credentials and consider changing the demo password before sharing the project.
 
-## 💾 Data Storage
-
-The application is designed to store data locally using Java serialization and file handling. This removes the need to configure MySQL or another database server.
-
-For example, the application may use a path such as:
-
-```text
-data/payroll-data.ser
-```
-
-Generated data files should remain local and should not be uploaded to the public repository, especially if they contain personal or payroll information. Use fictional sample records when demonstrating the application.
 
 ## 🎯 Learning Outcomes
 
