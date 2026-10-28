@@ -61,19 +61,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-/**
- * PayFlow HR - Employee Payroll Management System
- *
- * Java Swing desktop application with local serialized storage.
- *
- * Default login:
- * Username: admin
- * Password: admin123
- *
- * This is an educational payroll-management prototype.
- * It does not calculate statutory tax, PF, ESI, or other
- * country-specific payroll contributions.
- */
+
 public class Main extends JFrame {
 
     private static final String APP_TITLE =
@@ -147,10 +135,6 @@ public class Main extends JFrame {
         seedDefaultsIfNeeded();
         showLogin();
     }
-
-    // =========================================================
-    // LOGIN
-    // =========================================================
 
     private void showLogin() {
         JFrame login = new JFrame("PayFlow HR | Sign in");
@@ -274,10 +258,6 @@ public class Main extends JFrame {
                 .findFirst()
                 .orElse(null);
     }
-
-    // =========================================================
-    // MAIN WINDOW
-    // =========================================================
 
     private void buildMainWindow() {
         setTitle(APP_TITLE);
@@ -429,10 +409,6 @@ public class Main extends JFrame {
         return main;
     }
 
-    // =========================================================
-    // DASHBOARD
-    // =========================================================
-
     private void buildDashboardTab() {
         JPanel page = new JPanel(new BorderLayout(0, 18));
         page.setOpaque(false);
@@ -575,10 +551,6 @@ JTextArea text = new JTextArea(
 
         return card;
     }
-
-    // =========================================================
-    // EMPLOYEES
-    // =========================================================
 
     private void buildEmployeesTab() {
         JPanel page = new JPanel(new BorderLayout(0, 12));
@@ -1106,10 +1078,6 @@ JTextArea text = new JTextArea(
                 .orElse(1000) + 1;
     }
 
-    // =========================================================
-    // DEPARTMENTS
-    // =========================================================
-
     private void buildDepartmentsTab() {
         JPanel page = new JPanel(new BorderLayout(0, 12));
         page.setOpaque(false);
@@ -1286,10 +1254,6 @@ JTextArea text = new JTextArea(
                 .findFirst()
                 .orElse(null);
     }
-
-    // =========================================================
-    // SALARY STRUCTURES
-    // =========================================================
 
     private void buildSalaryTab() {
         JPanel page = new JPanel(new BorderLayout(0, 12));
@@ -1472,10 +1436,6 @@ JTextArea text = new JTextArea(
             error(ex.getMessage());
         }
     }
-
-    // =========================================================
-    // PAYROLL
-    // =========================================================
 
     private void buildPayrollTab() {
         JPanel page = new JPanel(new BorderLayout(0, 12));
@@ -1738,10 +1698,6 @@ JTextArea text = new JTextArea(
         }
     }
 
-    // =========================================================
-    // PAYSLIPS
-    // =========================================================
-
     private void buildPayslipsTab() {
         JPanel page = new JPanel(new BorderLayout(0, 12));
         page.setOpaque(false);
@@ -1859,10 +1815,6 @@ JTextArea text = new JTextArea(
                 + "Prototype payslip. Tax and statutory contributions "
                 + "are not calculated.";
     }
-
-    // =========================================================
-    // REPORTS
-    // =========================================================
 
     private void buildReportsTab() {
         JPanel page = new JPanel(new BorderLayout(0, 14));
@@ -2090,10 +2042,6 @@ JTextArea text = new JTextArea(
         }
     }
 
-    // =========================================================
-    // AUDIT LOG
-    // =========================================================
-
     private void buildAuditTab() {
         JPanel page = new JPanel(new BorderLayout(0, 12));
         page.setOpaque(false);
@@ -2124,10 +2072,6 @@ JTextArea text = new JTextArea(
 
         tabs.addTab("Audit Log", page);
     }
-
-    // =========================================================
-    // UI HELPERS
-    // =========================================================
 
     private JPanel titledPanel(String title) {
         JPanel panel = new JPanel(new BorderLayout(0, 14));
@@ -2238,10 +2182,6 @@ JTextArea text = new JTextArea(
                 amount.setScale(2, RoundingMode.HALF_UP)
         );
     }
-
-    // =========================================================
-    // INPUT VALIDATION
-    // =========================================================
 
     private String requireNonBlank(
             String value,
@@ -2394,10 +2334,6 @@ JTextArea text = new JTextArea(
         }
     }
 
-    // =========================================================
-    // SECURITY
-    // =========================================================
-
     private String generateSalt() {
         SecureRandom random = new SecureRandom();
 
@@ -2437,10 +2373,6 @@ JTextArea text = new JTextArea(
                 expectedHash.getBytes(StandardCharsets.UTF_8)
         );
     }
-
-    // =========================================================
-    // REFRESH
-    // =========================================================
 
     private void refreshAll() {
         refreshEmployeeTable();
@@ -2612,10 +2544,6 @@ JTextArea text = new JTextArea(
         }
     }
 
-    // =========================================================
-    // AUDIT + STORAGE
-    // =========================================================
-
     private void log(String action, String details) {
         data.audit.add(
                 new Audit(
@@ -2782,11 +2710,7 @@ JTextArea text = new JTextArea(
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
-
-    // =========================================================
-    // DATA CLASSES
-    // =========================================================
-
+    
     private static class AppData implements Serializable {
         private static final long serialVersionUID = 1L;
 
@@ -2970,10 +2894,6 @@ JTextArea text = new JTextArea(
             this.details = details;
         }
     }
-
-    // =========================================================
-    // GLOBAL THEME + ENTRY POINT
-    // =========================================================
 
     private static void configureUIDefaults() {
         Font body = new Font("SansSerif", Font.PLAIN, 14);
